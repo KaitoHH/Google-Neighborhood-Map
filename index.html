@@ -20,6 +20,7 @@
         </header>
         <div class="search-field max-height flexbox">
             <input type="text" data-bind="value: searchText, valueUpdate: 'afterkeydown'" name="search" value="" placeholder="search location...">
+            <h3 id="networkerror">Can't connect to server :(</h3>
             <ul data-bind="foreach: searchRet" id="search-result" class="max-height">
                 <div data-bind="click: $parent.showOnMap" class="result-item">
                     <li data-bind="text: name"></li>

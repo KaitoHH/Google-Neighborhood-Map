@@ -1,6 +1,8 @@
 var map;
 
 function initMap() {
+    clearTimeout(timeout);
+    timeout = null;
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
             lat: -34.397,
@@ -18,6 +20,7 @@ function search(text) {
     };
     service = new google.maps.places.PlacesService(map);
     service.textSearch(request, model.callback);
+    timeout = timeout || setTimeout(networkerrorTimer, 20000);
 }
 
 function createMarker(place) {
@@ -56,9 +59,12 @@ function markerAddClickListener(infowindow, marker) {
     marker.addListener('click', function() {
         if (map.openedwindow) {
             map.openedwindow.close();
+            map.clickedmarker.setAnimation(null);
         }
         infowindow.open(map, marker);
+        marker.setAnimation(google.maps.Animation.BOUNCE);
         map.openedwindow = infowindow;
+        map.clickedmarker = marker;
     });
 }
 
