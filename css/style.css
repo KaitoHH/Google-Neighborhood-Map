@@ -2,10 +2,73 @@
     height: 100%;
 }
 
+#menu {
+    background-color: rgb(34, 42, 53);
+    color: rgb(195, 201, 211);
+    transition: width 0.5s;
+}
 
-/* Optional: Makes the sample page fill the window. */
+#board {
+    background-color: rgb(26, 31, 39);
+    color: rgb(195, 201, 211);
+    transition: width 0.5s;
+}
 
-html, body{
+#menu.expend {
+    width: 20%;
+}
+
+#board.expend {
+    width: 100%;
+}
+
+#menu.unexpend {
+    width: 0%;
+}
+
+#board.unexpend {
+    width: 80%;
+}
+
+@media (max-width:480px) {
+    #menu.expend {
+        width: 80%;
+    }
+    #board.expend {
+        width: 100%;
+    }
+    #menu.unexpend {
+        width: 0%;
+    }
+    #board.unexpend {
+        width: 20%;
+    }
+}
+
+header {
+    padding: 10px 0px;
+}
+
+.title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.title-icon {
+    float: left;
+    font-size: 22px;
+    padding: 0px 10px;
+    color: white;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
