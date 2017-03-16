@@ -58,22 +58,15 @@ header {
     background-color: rgb(26, 31, 39);
     color: rgb(195, 201, 211);
     transition: width 0.5s;
+    /*flex: 1;*/
 }
 
 #menu.expend {
-    width: 20%;
-}
-
-#board.expend {
-    width: 100%;
+    width: 360px;
 }
 
 #menu.unexpend {
-    width: 0%;
-}
-
-#board.unexpend {
-    width: 80%;
+    width: 0px;
 }
 
 #search-input {
@@ -89,9 +82,18 @@ header {
     overflow: auto;
 }
 
-#search-result>li {
+.result-item {
     list-style: none;
     font-size: 18px;
     padding: 7px 0px;
     border-bottom: 1px solid rgb(195, 201, 211);
+}
+
+.result-location {
+    text-align: right;
+    font-size: 12px;
+}
+
+.map-infowindow {
+    color: black;
 }

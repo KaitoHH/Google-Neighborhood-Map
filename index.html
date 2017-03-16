@@ -12,40 +12,23 @@
 </head>
 
 <body>
-    <nav id="menu" class="unexpend flexbox">
+    <nav id="menu" class="flexbox unexpend">
         <header>
             <div class="title sub-title">
                 Search Location
             </div>
         </header>
         <div class="search-field max-height flexbox">
-            <input type="text" name="search" value="" placeholder="search location..." id="search-input">
-            <ul id="search-result" class="max-height">
-                <li>123</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
-                <li>456</li>
+            <input type="text" data-bind="value: searchText, valueUpdate: 'afterkeydown'" name="search" value="" placeholder="search location...">
+            <ul data-bind="foreach: searchRet" id="search-result" class="max-height">
+                <div data-bind="click: $parent.showOnMap" class="result-item">
+                    <li data-bind="text: name"></li>
+                    <div data-bind="text: formatted_address" class="result-location"></div>
+                </div>
             </ul>
         </div>
     </nav>
-    <section id="board" class="expend flexbox">
+    <section id="board" class="flexbox max-height">
         <header>
             <a href="#" id="expend"><span class="title-icon glyphicon glyphicon-plus" aria-hidden="true"></span></a>
             <div class="title main-title">Google Neighborhood Map</div>
@@ -54,11 +37,11 @@
     </section>
 
 
+    <script src="js/lib/knockout-3.4.2.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdhFYebtYFCuw8rhS3cSUB371fCavOWPQ&libraries=places&callback=initMap" async defer></script>
     <script src="js/map.js"></script>
     <script src="js/app.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/lib/knockout-3.4.2.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFYhPqIWtbTYeAcnDjYBnujXxLB-6A7sc&callback=initMap" async defer></script>
 </body>
 
 </html>

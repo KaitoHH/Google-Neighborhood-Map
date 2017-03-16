@@ -8,7 +8,7 @@
     $expend.click(function() {
         isExpend = !isExpend;
         if (isExpend) {
-            $menu.removeClass('unexpend')
+            $menu.removeClass('unexpend');
             $menu.addClass('expend');
             $board.removeClass('expend');
             $board.addClass('unexpend');
@@ -18,5 +18,6 @@
             $menu.removeClass('expend');
             $menu.addClass('unexpend');
         }
-    })
+    });
+
 })();
