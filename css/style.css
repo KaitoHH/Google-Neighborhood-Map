@@ -10,6 +10,10 @@ html, body {
     padding: 0;
 }
 
+header {
+    padding: 10px 0px;
+}
+
 .flexbox {
     display: flex;
     flex-direction: column;
@@ -19,8 +23,29 @@ html, body {
     flex: 1;
 }
 
-#map {
-    flex: 1;
+.title {
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.main-title {
+    font-size: 20px;
+}
+
+.sub-title {
+    font-size: 14px;
+}
+
+.title-icon {
+    float: left;
+    font-size: 22px;
+    padding: 0px 10px;
+    color: white;
+}
+
+.search-field {
+    padding: 0px 10px;
 }
 
 #menu {
@@ -51,45 +76,12 @@ html, body {
     width: 80%;
 }
 
-header {
-    padding: 10px 0px;
-}
-
-.title {
-    text-align: center;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-.main-title {
-    font-size: 20px;
-}
-
-.sub-title {
-    font-size: 14px;
-}
-
-.title-icon {
-    float: left;
-    font-size: 22px;
-    padding: 0px 10px;
-    color: white;
-}
-
-.search-field {
-    padding: 0px 10px;
-}
-
 #search-input {
     font-size: 16px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid white;
     margin-bottom: 10px;
-}
-
-#search-input::placeholder {
-    text-align: center;
 }
 
 #search-result {
