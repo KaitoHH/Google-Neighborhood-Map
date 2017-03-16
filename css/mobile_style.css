@@ -1,0 +1,23 @@
+@media (max-width:480px) {
+    #menu.expend {
+        width: 80%;
+    }
+    #board.expend {
+        width: 100%;
+    }
+    #menu.unexpend {
+        width: 0%;
+    }
+    #board.unexpend {
+        width: 20%;
+    }
+    #search-input {
+        font-size: 20px;
+    }
+    .main-title {
+        font-size: 24px;
+    }
+    .sub-title {
+        font-size: 20px;
+    }
+}

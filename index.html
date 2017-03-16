@@ -5,21 +5,52 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0">
     <title>Google Neighborhood Map</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile_style.css">
     <script src="js/lib/jquery-3.1.1.min.js"></script>
 </head>
 
 <body>
-    <nav id="menu" class="unexpend">
-
+    <nav id="menu" class="unexpend flexbox">
+        <header>
+            <div class="title sub-title">
+                Search Location
+            </div>
+        </header>
+        <div class="search-field max-height flexbox">
+            <input type="text" name="search" value="" placeholder="search location..." id="search-input">
+            <ul id="search-result" class="max-height">
+                <li>123</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+                <li>456</li>
+            </ul>
+        </div>
     </nav>
-    <section id="board" class="expend">
+    <section id="board" class="expend flexbox">
         <header>
             <a href="#" id="expend"><span class="title-icon glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-            <div class="title">Google Neighborhood Map</div>
+            <div class="title main-title">Google Neighborhood Map</div>
         </header>
-        <div id="map"></div>
+        <div id="map" class="max-height"></div>
     </section>
 
 
