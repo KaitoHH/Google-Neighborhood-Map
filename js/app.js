@@ -4,8 +4,10 @@ var searchResultModel = function() {
     this.searchText = ko.observable();
     this.searchRet = ko.observableArray();
     this.searchText.subscribe(function(value) {
-        clearTimeout(clock);
-        clock = setTimeout(search, 1000, value);
+        if (value) {
+            clearTimeout(clock);
+            clock = setTimeout(search, 1000, value);
+        }
     });
 
     // this callback function will be called when google text search location service is complete.

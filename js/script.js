@@ -39,3 +39,23 @@ var timeout;
 $(document).ready(function() {
     timeout = setTimeout(loadGoogleApiTimer, 20000);
 });
+
+function requestFourSquare(location) {
+    var url = 'https://api.foursquare.com/v2/venues/explore';
+    url += '?' + $.param({
+        'client_id': 'VA4R5KR1RVUG3JMV5U5SZ1CHAQUONFSBGYP4CD0R3KCIVXMB',
+        'client_secret': 'FMSPCNXPMSK4AEG51J2ES5Y4BOFMJTW23NXJBIXO2XXCTL2P',
+        'v': '20170101',
+        'll': location.lat() + ',' + location.lng(),
+    });
+    $.ajax({
+        url: url,
+        success: function(result) {
+            var items = result.response.groups[0].items;
+            var $a = $('#map-recommend-place');
+            $a.html(items[0].venue.name);
+            $a.attr('href', items[0].venue.url);
+            //console.log(result.response.groups[0].items);
+        }
+    });
+}

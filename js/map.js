@@ -50,7 +50,7 @@ function fitMarkers(markers) {
 
 function createInfoWindow(place) {
     var infowindow = new google.maps.InfoWindow({
-        content: '<div class="map-infowindow">' + place.name + '</div>'
+        content: $('#map-template').html()
     });
     return infowindow;
 }
@@ -62,9 +62,11 @@ function markerAddClickListener(infowindow, marker) {
             map.clickedmarker.setAnimation(null);
         }
         infowindow.open(map, marker);
+        requestFourSquare(marker.position);
         marker.setAnimation(google.maps.Animation.BOUNCE);
         map.openedwindow = infowindow;
         map.clickedmarker = marker;
+        $('#map-div>h4').html(marker.title);
     });
 }
 
