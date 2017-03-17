@@ -19,7 +19,11 @@
             </div>
         </header>
         <div class="search-field max-height flexbox">
-            <input type="text" data-bind="value: searchText, valueUpdate: 'afterkeydown'" name="search" value="" placeholder="search location...">
+            <input class="search-input" type="text" data-bind="textInput: searchText" name="search" value="" placeholder="search location...">
+            <div class="">
+                <button class="btn filter-btn" type="button" name="button">filter</button>
+                <input data-bind="textInput: filterText" class="filter-input hidden" type="text" name="filter" value="" placeholder="filter location...">
+            </div>
             <h3 id="networkerror">Can't connect to server :(</h3>
             <ul data-bind="foreach: searchRet" id="search-result" class="max-height">
                 <li data-bind="click: $parent.showOnMap" class="result-item">

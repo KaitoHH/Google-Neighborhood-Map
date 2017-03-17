@@ -4,8 +4,7 @@ body {
     flex-wrap: wrap;
 }
 
-html,
-body {
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -70,7 +69,7 @@ header {
     width: 0px;
 }
 
-#search-input {
+.search-input {
     font-size: 16px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0);
@@ -97,4 +96,18 @@ header {
 
 .map-infowindow {
     color: black;
+}
+
+.filter-btn {
+    width: 100%;
+    color: white;
+    background-color: rgb(26, 31, 39);
+}
+
+.filter-btn:hover {
+    color: gray;
+}
+
+.filter-input {
+    width: 100%;
 }

@@ -1,7 +1,11 @@
+var filteropen = false;
+var $filter = $('.filter-btn');
+var $filterinput = $('.filter-input');
 (function() {
     var $expend = $('#expend');
     var $menu = $('#menu');
     var $board = $('#board');
+
     var isExpend = true;
     $('#networkerror').hide();
 
@@ -21,7 +25,24 @@
         }
     });
 
+    $filter.click(function() {
+        toogleFilter();
+    });
+
 })();
+
+
+function toogleFilter() {
+    filteropen = !filteropen;
+    $filter.val("");
+    if (filteropen) {
+        $filter.addClass('hidden');
+        $filterinput.removeClass('hidden');
+    } else {
+        $filter.removeClass('hidden');
+        $filterinput.addClass('hidden');
+    }
+}
 
 function loadGoogleApiTimer() {
     $('#map').html('<h3>Oh no! We can\'t connect to google api server :(</h3>');
