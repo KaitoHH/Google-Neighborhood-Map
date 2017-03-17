@@ -27,17 +27,18 @@ function createMarker(place) {
     var marker = new google.maps.Marker({
         position: place.geometry.location,
         animation: google.maps.Animation.DROP,
-        title: place.name
+        title: place.name,
+        map: map
     });
     return marker;
 }
 
 function putMarker(marker) {
-    marker.setMap(map);
+    marker.setVisible(true);
 }
 
 function clearMarker(marker) {
-    marker.setMap(null);
+    marker.setVisible(false);
 }
 
 function fitMarkers(markers) {
