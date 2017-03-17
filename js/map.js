@@ -9,6 +9,7 @@ function initMap() {
         },
         zoom: 8
     });
+    search('Shanghai,China');
     map.content = $('#map-template');
 }
 

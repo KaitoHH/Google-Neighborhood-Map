@@ -3,9 +3,9 @@ var SearchResultModel = function() {
     var clock;
     this.allRet = [];
     this.foursquare = new FoursquareModel();
-    this.searchText = ko.observable();
+    this.filter = new filterModel();
+    this.searchText = ko.observable("Shanghai,China");
     this.searchRet = ko.observableArray();
-    this.filterText = ko.observable();
 
     // this subscribe function is to delay requesting
     this.searchText.subscribe(function(value) {
@@ -15,9 +15,9 @@ var SearchResultModel = function() {
         }
     });
 
-    this.filterText.subscribe(function(value) {
+    this.filter.filterText.subscribe(function(value) {
         if (!value) {
-            toogleFilter();
+            self.filter.toogleFilter();
             self.searchRet(self.allRet);
             self.allRet.forEach(function(ret) {
                 putMarker(ret);
@@ -69,6 +69,18 @@ var FoursquareModel = function() {
     this.place = ko.observable();
     this.recommendplace = ko.observable();
     this.url = ko.observable();
+};
+
+var filterModel = function() {
+    var self = this;
+    this.vFilterBtn = ko.observable(true);
+    this.vFilterInput = ko.observable(false);
+    this.filterText = ko.observable();
+    this.toogleFilter = function() {
+        self.vFilterBtn(!self.vFilterBtn());
+        self.vFilterInput(!self.vFilterInput());
+        self.filterText("");
+    };
 };
 
 var model = new SearchResultModel();
