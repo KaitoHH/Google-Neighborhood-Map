@@ -47,7 +47,7 @@ function requestFourSquare(location) {
         success: function(result) {
             var items = result.response.groups[0].items;
             model.foursquare.recommendplace(items[0].venue.name);
-            model.foursquare.url(items[0].venue.url);
+            model.foursquare.url(items[0].venue.url ? items[0].venue.url : '#');
             map.openedwindow.setContent(model.mapTemplate());
         },
         error: function(error) {
