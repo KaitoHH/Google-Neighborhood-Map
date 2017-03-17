@@ -1,8 +1,8 @@
-var searchResultModel = function() {
+var SearchResultModel = function() {
     var self = this;
     var clock;
     this.allRet = [];
-    this.foursquare = new foursquareModel();
+    this.foursquare = new FoursquareModel();
     this.searchText = ko.observable();
     this.searchRet = ko.observableArray();
     this.filterText = ko.observable();
@@ -27,7 +27,7 @@ var searchResultModel = function() {
         var array = [];
         for (var i = 0; i < self.allRet.length; i++) {
             var place = self.allRet[i].hookplace;
-            if (place.types.indexOf(value) != -1) {
+            if (place.name.toLowerCase().indexOf(value.toLowerCase()) != -1) {
                 array.push(self.allRet[i]);
                 putMarker(self.allRet[i]);
             } else {
@@ -65,11 +65,11 @@ var searchResultModel = function() {
     };
 };
 
-var foursquareModel = function() {
+var FoursquareModel = function() {
     this.place = ko.observable();
     this.recommendplace = ko.observable();
     this.url = ko.observable();
 };
 
-var model = new searchResultModel();
+var model = new SearchResultModel();
 ko.applyBindings(model);

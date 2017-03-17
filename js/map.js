@@ -20,7 +20,7 @@ function search(text) {
     };
     service = new google.maps.places.PlacesService(map);
     service.textSearch(request, model.callback);
-    timeout = setTimeout(networkerrorTimer, 20000);
+    timeout = setTimeout(networkErrorTimer, 20000);
 }
 
 function createMarker(place) {

@@ -48,7 +48,7 @@ function loadGoogleApiTimer() {
     $('#map').html('<h3>Oh no! We can\'t connect to google api server :(</h3>');
 }
 
-function networkerrorTimer() {
+function networkErrorTimer() {
     $('#networkerror').show();
 }
 
