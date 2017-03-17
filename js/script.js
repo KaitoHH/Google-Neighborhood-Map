@@ -4,7 +4,6 @@
     var $board = $('#board');
 
     var isExpend = true;
-    $('#networkerror').hide();
 
     // toogle menu
     $expend.click(function() {
@@ -30,11 +29,7 @@ function loadGoogleApiTimer() {
 }
 
 function networkErrorTimer() {
-    $('#networkerror').show();
-}
-
-function globalCallback() {
-    $('#networkerror').hide();
+    model.serverError(true);
 }
 
 var timeout;
@@ -53,11 +48,11 @@ function requestFourSquare(location) {
             var items = result.response.groups[0].items;
             model.foursquare.recommendplace(items[0].venue.name);
             model.foursquare.url(items[0].venue.url);
-            map.openedwindow.setContent(map.content.html());
+            map.openedwindow.setContent(model.mapTemplate());
         },
         error: function(error) {
             model.foursquare.recommendplace("network error");
-            map.openedwindow.setContent(map.content.html());
+            map.openedwindow.setContent(model.mapTemplate());
         }
     });
 }

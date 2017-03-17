@@ -10,7 +10,6 @@ function initMap() {
         zoom: 8
     });
     search('Shanghai,China');
-    map.content = $('#map-template');
 }
 
 function search(text) {
@@ -64,7 +63,7 @@ function markerAddClickListener(infowindow, marker) {
         model.foursquare.recommendplace("loading...");
         model.foursquare.url("#");
         infowindow.open(map, marker);
-        infowindow.setContent(map.content.html());
+        infowindow.setContent(model.mapTemplate());
         requestFourSquare(marker.position);
         marker.setAnimation(google.maps.Animation.BOUNCE);
         map.openedwindow = infowindow;

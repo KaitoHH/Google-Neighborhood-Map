@@ -6,6 +6,21 @@ var SearchResultModel = function() {
     this.filter = new filterModel();
     this.searchText = ko.observable("Shanghai,China");
     this.searchRet = ko.observableArray();
+    this.serverError = ko.observable(false);
+
+    this.mapTemplate = ko.computed(function() {
+        var template =
+            '<div class="map-infowindow">' +
+            '<h4>' + self.foursquare.place() + '</h4>' +
+            '<div>' +
+            'nearby recommend place' +
+            '<br>' +
+            '<a href="' + self.foursquare.url() + '" id="map-recommend-place">' +
+            self.foursquare.recommendplace() + '</a>' +
+            '</div>' +
+            '</div>';
+        return template;
+    });
 
     // this subscribe function is to delay requesting
     this.searchText.subscribe(function(value) {
@@ -56,8 +71,10 @@ var SearchResultModel = function() {
             }
             fitMarkers(self.searchRet());
             self.allRet = self.searchRet();
+            self.serverError(false);
+        } else {
+            self.serverError(true);
         }
-        globalCallback();
     };
     this.showOnMap = function(marker) {
         setCenter(marker);
