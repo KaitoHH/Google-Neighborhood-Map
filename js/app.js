@@ -6,7 +6,8 @@ var searchResultModel = function() {
     this.searchText = ko.observable();
     this.searchRet = ko.observableArray();
     this.filterText = ko.observable();
-    // this subscribe function to delay requesting
+
+    // this subscribe function is to delay requesting
     this.searchText.subscribe(function(value) {
         if (value) {
             clearTimeout(clock);
@@ -20,7 +21,8 @@ var searchResultModel = function() {
             self.searchRet(self.allRet);
             self.allRet.forEach(function(ret) {
                 putMarker(ret);
-            })
+            });
+            return;
         }
         var array = [];
         for (var i = 0; i < self.allRet.length; i++) {
