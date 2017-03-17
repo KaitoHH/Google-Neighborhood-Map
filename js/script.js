@@ -36,9 +36,6 @@ function globalCallback() {
 }
 
 var timeout;
-$(document).ready(function() {
-    timeout = setTimeout(loadGoogleApiTimer, 20000);
-});
 
 function requestFourSquare(location) {
     var url = 'https://api.foursquare.com/v2/venues/explore';
@@ -52,10 +49,13 @@ function requestFourSquare(location) {
         url: url,
         success: function(result) {
             var items = result.response.groups[0].items;
-            var $a = $('#map-recommend-place');
-            $a.html(items[0].venue.name);
-            $a.attr('href', items[0].venue.url);
-            //console.log(result.response.groups[0].items);
+            model.foursquare.recommendplace(items[0].venue.name);
+            model.foursquare.url(items[0].venue.url);
+            map.openedwindow.setContent(map.content.html());
+        },
+        error: function(error) {
+            model.foursquare.recommendplace("network error");
+            map.openedwindow.setContent(map.content.html());
         }
     });
 }

@@ -1,6 +1,7 @@
 var searchResultModel = function() {
     var self = this;
     var clock;
+    this.foursquare = new foursquareModel();
     this.searchText = ko.observable();
     this.searchRet = ko.observableArray();
     this.searchText.subscribe(function(value) {
@@ -33,6 +34,12 @@ var searchResultModel = function() {
         setCenter(marker);
         triggerClick(marker);
     };
+};
+
+var foursquareModel = function() {
+    this.place = ko.observable();
+    this.recommendplace = ko.observable();
+    this.url = ko.observable();
 };
 
 var model = new searchResultModel();

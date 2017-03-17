@@ -22,38 +22,38 @@
             <input type="text" data-bind="value: searchText, valueUpdate: 'afterkeydown'" name="search" value="" placeholder="search location...">
             <h3 id="networkerror">Can't connect to server :(</h3>
             <ul data-bind="foreach: searchRet" id="search-result" class="max-height">
-                <div data-bind="click: $parent.showOnMap" class="result-item">
-                    <li data-bind="text: name"></li>
+                <li data-bind="click: $parent.showOnMap" class="result-item">
+                    <div data-bind="text: name"></div>
                     <div data-bind="text: formatted_address" class="result-location"></div>
-                </div>
+                </li>
             </ul>
         </div>
     </nav>
-    <section id="board" class="flexbox max-height">
+    <div id="board" class="flexbox max-height">
         <header>
             <a href="#" id="expend"><span class="title-icon glyphicon glyphicon-plus" aria-hidden="true"></span></a>
             <div class="title main-title">Google Neighborhood Map</div>
         </header>
         <div id="map" class="max-height"></div>
-    </section>
+    </div>
 
-    <div id="map-template" class="hidden">
-        <div class="map-infowindow" id="map-div">
-            <h4></h4>
-            <div class="">
+    <div id="map-template" class="hidden" data-bind="allowBindings: false">
+        <div class="map-infowindow" id="map-div" data-bind="with: foursquare">
+            <h4 data-bind="text: place"></h4>
+            <div>
                 nearby recommend place
                 <br>
-                <a id="map-recommend-place" href="#"></a>
+                <a data-bind="text: recommendplace, href: url" id="map-recommend-place" href="#"></a>
             </div>
         </div>
     </div>
 
 
     <script src="js/lib/knockout-3.4.2.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdhFYebtYFCuw8rhS3cSUB371fCavOWPQ&libraries=places&callback=initMap" async defer></script>
     <script src="js/map.js"></script>
     <script src="js/app.js"></script>
     <script src="js/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdhFYebtYFCuw8rhS3cSUB371fCavOWPQ&libraries=places&callback=initMap" async defer onerror="loadGoogleApiTimer()"></script>
 </body>
 
 </html>

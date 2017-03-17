@@ -1,7 +1,6 @@
 var map;
 
 function initMap() {
-    clearTimeout(timeout);
     timeout = null;
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
@@ -10,6 +9,7 @@ function initMap() {
         },
         zoom: 8
     });
+    map.content = $('#map-template');
 }
 
 function search(text) {
@@ -20,7 +20,7 @@ function search(text) {
     };
     service = new google.maps.places.PlacesService(map);
     service.textSearch(request, model.callback);
-    timeout = timeout || setTimeout(networkerrorTimer, 20000);
+    timeout = setTimeout(networkerrorTimer, 20000);
 }
 
 function createMarker(place) {
@@ -49,9 +49,7 @@ function fitMarkers(markers) {
 }
 
 function createInfoWindow(place) {
-    var infowindow = new google.maps.InfoWindow({
-        content: $('#map-template').html()
-    });
+    var infowindow = new google.maps.InfoWindow();
     return infowindow;
 }
 
@@ -61,12 +59,15 @@ function markerAddClickListener(infowindow, marker) {
             map.openedwindow.close();
             map.clickedmarker.setAnimation(null);
         }
+        model.foursquare.place(marker.name);
+        model.foursquare.recommendplace("loading...");
+        model.foursquare.url("#");
         infowindow.open(map, marker);
+        infowindow.setContent(map.content.html());
         requestFourSquare(marker.position);
         marker.setAnimation(google.maps.Animation.BOUNCE);
         map.openedwindow = infowindow;
         map.clickedmarker = marker;
-        $('#map-div>h4').html(marker.title);
     });
 }
 
